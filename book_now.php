@@ -3,13 +3,22 @@
 
 include 'db_connect.php';
 extract($_POST);
+// Ensure $seats is not more than 4
+$seats = min($seats, 4);
+
+if ($seats > 4) {
+	echo json_encode(array('status' => 0, 'message' => 'Quantity should not exceed 4.'));
+	exit;
+}
 
 $data = ' schedule_id = ' . $sid . ' ';
 $data .= ', name = "' . $name . '" ';
-$data .= ', qty ="' . $qty . '" ';
+$data .= ', seats = "' . $seats . '" ';
+
 if (!empty($bid)) {
 	$data .= ', status ="' . $status . '" ';
 	$update = $conn->query("UPDATE booked set " . $data . " where id =" . $bid);
+	$update = $conn->query("UPDATE schedule_list SET availability = availability - $seats WHERE id =". $bid);
 	if ($update) {
 		echo json_encode(array('status' => 1));
 	}
@@ -26,7 +35,21 @@ while ($i == 1) {
 }
 
 // echo "INSERT INTO booked set ".$data;
-$insert = $conn->query("INSERT INTO booked set " . $data);
+$insert = $conn->query("INSERT INTO booked SET " . $data);
+
+// var_dump($insert);
+
 if ($insert) {
 	echo json_encode(array('status' => 1, 'ref' => $ref));
+
+	// Decrement the 'availability' column in the 'schedule_list' table
+	$update = $conn->query("UPDATE schedule_list SET availability = availability - $seats WHERE id = $sid");
+
+	if ($update) {
+		echo "Booking successful.";
+	} else {
+		echo "Failed to update availability.";
+	}
+} else {
+	echo "Failed to insert booked seats.";
 }

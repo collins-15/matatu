@@ -23,7 +23,7 @@
 										<th class="text-center">#</th>
 										<th class="text-center">Ref. No.</th>
 										<th class="text-center">Name</th>
-										<th class="text-center">Qty</th>
+										<th class="text-center">seats</th>
 										<th class="text-center">Amount</th>
 										<th class="text-center">Status</th>
 										<th class="text-center">Action</th>
@@ -66,7 +66,7 @@
 								tr.append('<td class="text-center">' + (i++) + '</td>')
 								tr.append('<td class="">' + resp[k].ref_no + '</td>')
 								tr.append('<td class="">' + resp[k].name + '</td>')
-								tr.append('<td class="">' + resp[k].qty + '</td>')
+								tr.append('<td class="">' + resp[k].seats + '</td>')
 								tr.append('<td class="">' + resp[k].amount + '</td>')
 								tr.append('<td class="">' + (resp[k].status == 1 ? 'Paid' : 'Unpaid') + '</td>')
 

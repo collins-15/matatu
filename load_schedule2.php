@@ -13,8 +13,8 @@ if (empty($id)) {
 $qry = $conn->query("SELECT s.*,concat(b.bus_number,' | ',b.name) as bus FROM schedule_list s inner join bus b on b.id = s.bus_id where s.status = 1 " . $where . " order by date(s.departure_time) asc");
 $data = array();
 while ($row = $qry->fetch_assoc()) {
-	$from_location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where id = " . $row['from_location'])->fetch_array()['location'];
-	$to_location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where id = " . $row['to_location'])->fetch_array()['location'];
+	$from_location = $conn->query("SELECT id,city as location FROM location where id = " . $row['from_location'])->fetch_array()['location'];
+	$to_location = $conn->query("SELECT id,city as location FROM location where id = " . $row['to_location'])->fetch_array()['location'];
 	$row['from_location'] = $from_location;
 	$row['to_location'] = $to_location;
 	$row['date'] = date('M d, Y', strtotime($row['departure_time']));

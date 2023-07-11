@@ -7,9 +7,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 		$meta[$k] = $val;
 	}
 	$bus = $conn->query("SELECT * FROM bus where id = " . $meta['bus_id'])->fetch_array();
-	$from_location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where id =" . $meta['from_location'])->fetch_array();
-	$to_location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where id =" . $meta['to_location'])->fetch_array();
-	$count = $conn->query("SELECT SUM(qty) as sum from booked where schedule_id =" . $meta['id'])->fetch_array()['sum'];
+	$from_location = $conn->query("SELECT id,city  as location FROM location where id =" . $meta['from_location'])->fetch_array();
+	$to_location = $conn->query("SELECT id, city as location FROM location WHERE id = " . $meta['to_location'])->fetch_array();
+	$count = $conn->query("SELECT SUM(seats) as sum from booked where schedule_id =" . $meta['id'])->fetch_array()['sum'];
 }
 if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 	$booked = $conn->query("SELECT * FROM booked where id=" . $_GET['bid'])->fetch_array();
@@ -43,20 +43,20 @@ if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 					value='<?php echo isset($_GET['bid']) ? $_GET['bid'] : '' ?>' required="">
 
 				<div class="form-group mb-2">
-					<label for="name" class="control-label">Name</label>
+					<label for="name" class="control-label">Name:</label>
 					<input type="text" class="form-control" id="name" name="name"
 						value="<?php echo isset($bmeta['name']) ? $bmeta['name'] : '' ?>">
 				</div>
 				<div class="form-group mb-2">
-					<label for="qty" class="control-label">Quantity</label>
-					<input type="number" maxlength="4" class="form-control text-right" id="qty" name="qty"
-						value="<?php echo isset($bmeta['qty']) ? $bmeta['qty'] : '' ?>">
+					<label for="seats" class="control-label">Number of seats:</label>
+					<input type="number" maxlength="4" class="form-control text-right" id="seats" name="seats"
+						value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
 				</div>
 				<?php if (isset($_SESSION['login_id'])): ?>
 					<div class="form-group mb-2">
-						<label for="qty" class="control-label">Status</label>
+						<label for="seats" class="control-label">Status</label>
 						<select class="form-control" id="status" name="status"
-							value="<?php echo isset($bmeta['qty']) ? $bmeta['qty'] : '' ?>">
+							value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
 							<option value="1" <?php echo isset($bmeta['status']) && $bmeta['status'] == 1 ? "selected" : '' ?>>
 								Paid</option>
 							<option value="0" <?php echo isset($bmeta['status']) && $bmeta['status'] == 0 ? "selected" : '' ?>>

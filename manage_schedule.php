@@ -7,7 +7,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 	}
 }
 $bus = $conn->query("SELECT * FROM bus where status = 1");
-$location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where status = 1");
+$location = $conn->query("SELECT id, city AS location FROM location WHERE status = 1");
+
 ?>
 <div class="container-fluid">
 	<form id="manage_schedule">
@@ -34,7 +35,8 @@ $location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) a
 				</select>
 			</div>
 			<?php
-			$location = $conn->query("SELECT id,Concat(terminal_name,', ',city,', ',state) as location FROM location where status = 1");
+			$location = $conn->query("SELECT id, city AS location FROM location WHERE status = 1");
+
 			?>
 			<div class="form-group mb-2">
 				<label for="to_location" class="control-label">To</label>

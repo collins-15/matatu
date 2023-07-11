@@ -1,12 +1,14 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
 
-    <h1 class="logo mr-auto"><a href="./index.php?page=home">Bus Booking</a></h1>
+    <h1 class="logo mr-auto"><a href="./index.php?page=home">SUPER METRO</a></h1>
 
     <nav class="nav-menu d-none d-lg-block" id='top-nav'>
       <ul>
         <li class="nav-home"><a href="./index.php?page=home">Home</a></li>
-        <li class="nav-schedule"><a href="./index.php?page=schedule">Schedule</a></li>
+        <li class="nav-about"><a href="./index.php?page=about">About us</a></li>
+        <li class="nav-contact"><a href="./index.php?page=contact">Contact us</a></li>
+        <li class="nav-schedule"><a href="./index.php?page=schedule">Our Schedule</a></li>
         <li class="nav-admin"><a href="./index.php?page=admin">Admin (Login)</a></li>
       </ul>
     </nav>

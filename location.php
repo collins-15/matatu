@@ -23,9 +23,7 @@
 								<thead>
 									<tr>
 										<th class="text-center">#</th>
-										<th class="text-center">Terminal</th>
 										<th class="text-center">City</th>
-										<th class="text-center">Province/ State</th>
 										<th class="text-center">Action</th>
 									</tr>
 								</thead>
@@ -64,9 +62,7 @@
 							Object.keys(resp).map(k => {
 								var tr = $('<tr></tr>');
 								tr.append('<td class="text-center">' + (i++) + '</td>')
-								tr.append('<td class="text-center">' + resp[k].terminal_name + '</td>')
 								tr.append('<td>' + resp[k].city + '</td>')
-								tr.append('<td>' + resp[k].state + '</td>')
 								if ('<?php echo isset($_SESSION['login_id']) ? 1 : 0 ?>' == 1) {
 									tr.append('<td><center><button class="btn btn-sm btn-primary edit_location mr-2" data-id="' + resp[k].id + '">Edit</button><button class="btn btn-sm btn-danger remove_location" data-id="' + resp[k].id + '">Delete</button></center></td>')
 								} else {

@@ -4,6 +4,7 @@ include('db_connect.php');
 extract($_POST);
 $data = " name = '$name' ";
 $data .= ", bus_number = '$bus_number' ";
+$data .= ", bus_seats = '$bus_seats' ";
 if (empty($id)) {
 
 	$insert = $conn->query("INSERT INTO bus set " . $data);

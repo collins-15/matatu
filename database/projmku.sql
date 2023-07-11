@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2020 at 04:32 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.33
+-- Generation Time: Jul 11, 2023 at 11:30 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bus_booking`
+-- Database: `projmku`
 --
 
 -- --------------------------------------------------------
@@ -32,16 +32,16 @@ CREATE TABLE `booked` (
   `schedule_id` int(30) NOT NULL,
   `ref_no` text NOT NULL,
   `name` varchar(250) NOT NULL,
-  `qty` int(11) NOT NULL,
+  `seats` int(11) NOT NULL,
   `status` tinyint(1) DEFAULT 0 COMMENT '1=Paid, 0- Unpaid',
   `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `booked`
 --
 
-INSERT INTO `booked` (`id`, `schedule_id`, `ref_no`, `name`, `qty`, `status`, `date_updated`) VALUES
+INSERT INTO `booked` (`id`, `schedule_id`, `ref_no`, `name`, `seats`, `status`, `date_updated`) VALUES
 (1, 1, '202009091727', 'John Smith', 1, 1, '2020-09-09 10:29:44'),
 (2, 1, '202009091626', 'Sample', 2, 0, '2020-09-09 09:34:28'),
 (3, 1, '202009099953', 'asdasd asdasd', 27, 0, '2020-09-09 09:53:09');
@@ -57,15 +57,17 @@ CREATE TABLE `bus` (
   `name` varchar(250) NOT NULL,
   `bus_number` varchar(50) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0 = inactive, 1 = active',
-  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `bus_seats` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bus`
 --
 
-INSERT INTO `bus` (`id`, `name`, `bus_number`, `status`, `date_updated`) VALUES
-(3, 'Economy', '5001', 1, '2020-09-08 13:54:42');
+INSERT INTO `bus` (`id`, `name`, `bus_number`, `status`, `date_updated`, `bus_seats`) VALUES
+(3, 'Economy', '765', 1, '2023-07-11 23:55:56', 34),
+(4, 'nicco movers', '642', 1, '2023-07-11 23:57:53', 33);
 
 -- --------------------------------------------------------
 
@@ -75,20 +77,18 @@ INSERT INTO `bus` (`id`, `name`, `bus_number`, `status`, `date_updated`) VALUES
 
 CREATE TABLE `location` (
   `id` int(30) NOT NULL,
-  `terminal_name` text NOT NULL,
   `city` varchar(250) NOT NULL,
-  `state` varchar(250) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0= inactive , 1= active',
   `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `location`
 --
 
-INSERT INTO `location` (`id`, `terminal_name`, `city`, `state`, `status`, `date_updated`) VALUES
-(1, 'Sample Terminal Name', 'Sample City', 'Sample', 1, '2020-09-08 14:23:36'),
-(2, 'South Sample Terminal', 'South City', 'Sample', 1, '2020-09-08 14:33:04');
+INSERT INTO `location` (`id`, `city`, `status`, `date_updated`) VALUES
+(1, 'Sample City', 1, '2020-09-08 14:23:36'),
+(2, 'South City', 1, '2020-09-08 14:33:04');
 
 -- --------------------------------------------------------
 
@@ -104,16 +104,16 @@ CREATE TABLE `schedule_list` (
   `departure_time` datetime NOT NULL,
   `eta` datetime NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
-  `availability` int(11) NOT NULL,
+  `space_left` int(11) NOT NULL,
   `price` text NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `schedule_list`
 --
 
-INSERT INTO `schedule_list` (`id`, `bus_id`, `from_location`, `to_location`, `departure_time`, `eta`, `status`, `availability`, `price`, `date_updated`) VALUES
+INSERT INTO `schedule_list` (`id`, `bus_id`, `from_location`, `to_location`, `departure_time`, `eta`, `status`, `space_left`, `price`, `date_updated`) VALUES
 (1, 3, 1, 1, '2020-09-11 16:00:00', '2020-09-12 02:00:00', 1, 30, '250', '2020-09-08 07:49:57'),
 (2, 3, 2, 1, '2020-09-12 02:45:00', '2020-09-12 05:00:00', 1, 30, '250', '2020-09-08 07:37:52');
 
@@ -131,7 +131,7 @@ CREATE TABLE `users` (
   `password` varchar(25) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT ' 0 = incative , 1 = active',
   `date_updated` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -189,7 +189,7 @@ ALTER TABLE `booked`
 -- AUTO_INCREMENT for table `bus`
 --
 ALTER TABLE `bus`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `location`

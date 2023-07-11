@@ -22,6 +22,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 				<input type="number" class="form-control" id="bus_number" name="bus_number" required
 					value="<?php echo isset($meta['bus_number']) ? $meta['bus_number'] : '' ?>">
 			</div>
+			<div class="form-group mb-2">
+				<label for="bus_seats" class="control-label">Bus Seats</label>
+				<input type="number" class="form-control" id="bus_seats" name="bus_seats" required
+					value="<?php echo isset($meta['bus_seats']) ? $meta['bus_seats'] : '' ?>">
+			</div>
+
 		</div>
 	</form>
 </div>

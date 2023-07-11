@@ -21,6 +21,7 @@
 										<th class="text-center">#</th>
 										<th class="text-center">Bus No.</th>
 										<th class="text-center">Bus Name</th>
+										<th class="text-center">Bus seats</th>
 										<th class="text-center">Action</th>
 									</tr>
 								</thead>
@@ -61,6 +62,7 @@
 								tr.append('<td class="text-center">' + (i++) + '</td>')
 								tr.append('<td class="text-center">' + resp[k].bus_number + '</td>')
 								tr.append('<td>' + resp[k].name + '</td>')
+								tr.append('<td>' + resp[k].bus_seats + '</td>')
 								tr.append('<td><center><button class="btn btn-sm btn-primary edit_bus mr-2" data-id="' + resp[k].id + '">Edit</button><button class="btn btn-sm btn-danger remove_bus" data-id="' + resp[k].id + '">Delete</button></center></td>')
 								$('#bus-field tbody').append(tr)
 

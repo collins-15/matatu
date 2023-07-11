@@ -37,7 +37,7 @@
 										<th class="text-center">Location</th>
 										<th class="text-center">Departure</th>
 										<th class="text-center">ETA</th>
-										<th class="text-center">Availability</th>
+										<th class="text-center">Space left</th>
 										<th class="text-center">Price</th>
 										<th class="text-center">Action</th>
 									</tr>
@@ -82,7 +82,7 @@
 								tr.append('<td class="">' + resp[k].from_location + ' - ' + resp[k].to_location + '</td>')
 								tr.append('<td>' + resp[k].time + '</td>')
 								tr.append('<td>' + resp[k].eta + '</td>')
-								tr.append('<td>' + resp[k].availability + '</td>')
+								tr.append('<td>' + resp[k].bus_seats + '</td>')
 								tr.append('<td>' + resp[k].price + '</td>')
 								if ('<?php echo isset($_SESSION['login_id']) ? 1 : 0 ?>' == 1) {
 
