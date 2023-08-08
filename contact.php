@@ -19,8 +19,8 @@
     <div class="row">
       <div class="col-md-6">
         <h3>Contact Information</h3>
-        <p><strong>Address:</strong> 123 Main Street, City, Country</p>
-        <p><strong>Phone:</strong> +1 123-456-7890</p>
+        <p><strong>Address:</strong> 4213 Nairobi, Kenya</p>
+        <p><strong>Phone:</strong> +254 722-456-789</p>
         <p><strong>Email:</strong> info@supermetro.com</p>
       </div>
       

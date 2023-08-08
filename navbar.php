@@ -8,7 +8,8 @@
         <li class="nav-home"><a href="./index.php?page=home">Home</a></li>
         <li class="nav-about"><a href="./index.php?page=about">About us</a></li>
         <li class="nav-contact"><a href="./index.php?page=contact">Contact us</a></li>
-        <li class="nav-schedule"><a href="./index.php?page=schedule">Our Schedule</a></li>
+        <li class="nav-schedule"><a href="./index.php?page=schedule/schedule">Our Schedule</a></li>
+        <li class="nav-checkbook"><a href="./index.php?page=book/checkbook">check Booked</a></li>
         <li class="nav-admin"><a href="./index.php?page=admin">Admin (Login)</a></li>
       </ul>
     </nav>

@@ -6,12 +6,12 @@
     <nav class="nav-menu d-none d-lg-block" id='top-nav'>
       <ul>
         <li class="nav-home"><a href="./index.php?page=home">Home</a></li>
-        <li class="nav-schedule"><a href="./index.php?page=schedule">Schedule</a></li>
-        <li class="nav-booked"><a href="./index.php?page=booked">Booked List</a></li>
+        <li class="nav-schedule"><a href="./index.php?page=schedule/schedule">Schedule</a></li>
+        <li class="nav-booked"><a href="./index.php?page=book/booked">Booked List</a></li>
         <li class="drop-down nav-bus nav-location"><a href="#">Panel</a>
           <ul>
-            <li><a href="./index.php?page=bus">Bus List</a></li>
-            <li><a href="./index.php?page=location">Location List</a></li>
+            <li><a href="./index.php?page=bus/bus">Bus List</a></li>
+            <li><a href="./index.php?page=location/location">Location List</a></li>
 
 
           </ul>
@@ -20,8 +20,8 @@
             <?php echo $_SESSION['login_name'] ?>
           </a>
           <ul>
-            <li><a href="./index.php?page=user">Users</a></li>
-            <li><a href="javascript:void(0)" id="manage_account">Manage Account</a></li>
+            <li><a href="./index.php?page=user/user">Users</a></li>
+            <!-- <li><a href="javascript:void(0)" id="user/manage_account">Manage Account</a></li> -->
             <li><a href="./logout.php">Logout</a></li>
 
           </ul>
@@ -40,7 +40,7 @@
       $('#top-nav li.nav-' + page).addClass('active')
     }
     $('#manage_account').click(function () {
-      uni_modal('Manage Account', 'manage_account.php')
+      uni_modal('Manage Account', 'user/manage_account.php')
     })
   })
 

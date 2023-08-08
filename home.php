@@ -1,5 +1,5 @@
 <section id="bg-bus" class="d-flex align-items-center">
-<!-- <p>about us</p> -->
+
   <div class="container">
 
 
@@ -16,6 +16,6 @@
 </section>
 <script>
   $('#book_now').click(function () {
-    uni_modal('Find Schedule', 'book_filter.php')
+    uni_modal('Find Schedule', 'book/book_filter.php')
   })
 </script>
