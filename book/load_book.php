@@ -10,7 +10,7 @@ if (isset($_POST['refNumber'])) {
     // Query to fetch booking details based on the reference number
     $query = "SELECT 
     concat(b.bus_number, ' | ', b.name) AS bus_booked, 
-    bd.first_name, bd.last_name, bd.ID_number,
+    bd.first_name, bd.last_name, bd.ID_number,bd.ref_no,    
     bd.location, bd.phone_number, bd.email, bd.age, bd.seats, bd.status, 
     sl.price, sl.from_location, sl.to_location,
     b.driver_name, b.driver_number,b.registration_number, b.conductor_name,b.conductor_number

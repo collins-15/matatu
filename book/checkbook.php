@@ -31,6 +31,7 @@ span {
     </div>
     <div class="row">
         <div class="col-md-6">
+            <p><strong>Ticket Number:</strong> <span id="ref_no"></span></p>
             <p><strong>Bus Booked:</strong> <span id="bus_booked"></span></p>
             <p><strong>Bus Registration Number:</strong> <span id="registration_number"></span></p>
             <p><strong>Bus Driver's Name:</strong> <span id="driver_name"></span></p>
@@ -58,7 +59,15 @@ span {
             <!-- Add the "Pay" button -->
             <button id="payButton" class="btn btn-success btn-block">Pay</button>
         </div>
+       
+
     </div>
+    <div class="row justify-content-center mt-3">
+    <div class="col-md-6">
+    <!-- Add the "download" button -->
+    <button id="generatePDF" class="btn btn-success btn-block" style="display: none;">DOWNLOAD YOUR TICKET</button>
+</div>
+</div>
 </div>
 
 
@@ -128,6 +137,7 @@ span {
 
                     if (data && Object.keys(data).length > 0) {
                         // Update the HTML with the fetched booking details
+                        $('#ref_no').text(data.ref_no);
                         $('#bus_booked').text(data.bus_booked);
                         $('#bookingName').text(data.name);
                         $('#seats').text(data.seats);
@@ -204,8 +214,30 @@ span {
 
             // For demonstration purposes, show a success message (remove this in your actual implementation)
             alert('Payment successful!');
+            // Show the "Download" button after successful payment
+            $('#generatePDF').show();
+
+           // Add event listener for the "Download" button click
+          // Add event listener for the "Download" button click
+$('#generatePDF').click(function () {
+    var refNumber = $('#refNumber').val(); // Get the reference number from the input field
+
+    // Make an AJAX request to generate the PDF
+    $.ajax({
+        url: 'book/generate_pdf.php?ref_no=' + refNumber, // Pass the reference number as a parameter
+        method: 'GET',
+        success: function () {
+            // Once the AJAX request is successful, trigger the download
+            window.location.href = 'book/generate_pdf.php?ref_no=' + refNumber; // Update the filename if needed
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+});
 
             // You can also hide the payment form after successful payment
+
             $('#paymentForm').hide();
 
             // Now update the payment status to 1 (success) via AJAX

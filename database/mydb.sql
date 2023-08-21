@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2023 at 10:16 PM
+-- Generation Time: Aug 21, 2023 at 11:42 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -83,8 +83,8 @@ INSERT INTO `booked` (`id`, `schedule_id`, `ref_no`, `first_name`, `last_name`, 
 (33, 16, '202308022552', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 0, NULL),
 (34, 35, '20230820767', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 0, NULL),
 (35, 35, '202308204218', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 0, NULL),
-(36, 35, '202308201437', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 3, 0, NULL),
-(37, 35, '202308201282', 'collins', 'mutuma', '38735398', '0708249439', 'collinsmutuma15@gmail.com', '22', 'nairobi', 3, 0, NULL);
+(36, 35, '202308201437', 'juma', 'moi', '36826282', '0735262532', 'jumamoi@gmail.com', '20', 'meru', 3, 0, NULL),
+(37, 35, '202308201282', 'collins', 'mutuma', '38735398', '0708249439', 'collinsmutuma15@gmail.com', '22', 'nairobi', 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -289,7 +289,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `user_type`, `username`, `password`, `status`, `date_updated`) VALUES
-(1, 'admin', '1', 'admin', '$2y$10$zceUMUap6ATKxhW27Y.CgOZTkQS2WsoNbGcF4gWsVP2hbuVaZCh4C', 1, NULL),
+(1, 'admin', 'Admin', 'admin', '$2y$10$zceUMUap6ATKxhW27Y.CgOZTkQS2WsoNbGcF4gWsVP2hbuVaZCh4C', 1, NULL),
 (2, 'brian', '', 'beia', 'admin123', 0, NULL),
 (3, 'brian', '', 'adminbr', 'admin123', 1, NULL),
 (4, 'john', '', 'john', '$2y$10$tZWJ0fGhWeSsMB93CqM.hOxJ9.Q/w.kbmrnnlzYZOhefXF03Gts3e', 1, NULL);
