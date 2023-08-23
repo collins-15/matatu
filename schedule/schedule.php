@@ -25,12 +25,12 @@
 		<div class="container-fluid">
 			<div class="col-lg-12">
 				<?php if (isset($_SESSION['login_id'])): ?>
-					<div class="row">
-						<div class="col-md-12">
-							<button class="float-right btn btn-primary btn-sm" type="button" id="new_schedule">Add New <i
-									class="fa fa-plus"></i></button>
+						<div class="row">
+							<div class="col-md-12">
+								<button class="float-right btn btn-primary btn-sm" type="button" id="new_schedule">Add New <i
+										class="fa fa-plus"></i></button>
+							</div>
 						</div>
-					</div>
 				<?php endif; ?>
 				<div class="row">
 					&nbsp;

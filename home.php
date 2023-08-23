@@ -7,7 +7,9 @@
       <center><button class="btn btn-info btn-lg" type="button" id="book_now">Welcome, Start Booking with us Now!</button></center>
     <?php else: ?>
       <h2>Welcome ,
-        <?php echo $_SESSION['login_name'] ?>
+        <?php echo $_SESSION['login_name'] ;
+        ?>
+       
       </h2>
     <?php endif; ?>
 

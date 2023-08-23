@@ -17,7 +17,7 @@ $location = $conn->query("SELECT id,city as location FROM location where status 
 				<select name="from_location" id="from_location" class="form-control" required>
 					<option value="" <?php echo isset($meta['to_location']) && $meta['from_location'] > 0 ? '' : 'selected' ?> disabled="">Select Here</option>
 					<?php while ($row = $location->fetch_assoc()) { ?>
-						<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['from_location']) && $meta['from_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['location'] ?></option>
+							<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['from_location']) && $meta['from_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['location'] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -29,7 +29,7 @@ $location = $conn->query("SELECT id,city as location FROM location where status 
 				<select name="to_location" id="to_location" class="form-control" required>
 					<option value="" <?php echo isset($meta['to_location']) && $meta['to_location'] > 0 ? '' : 'selected' ?> disabled="">Select Here</option>
 					<?php while ($row2 = $location->fetch_assoc()) { ?>
-						<option value="<?php echo $row2['id'] ?>" <?php echo isset($meta['to_location']) && $meta['to_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row2['location'] ?></option>
+							<option value="<?php echo $row2['id'] ?>" <?php echo isset($meta['to_location']) && $meta['to_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row2['location'] ?></option>
 					<?php } ?>
 				</select>
 			</div>

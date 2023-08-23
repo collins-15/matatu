@@ -62,48 +62,48 @@ if (isset($_GET['ref_no'])) {
         // Add the "From" and "To" locations to the booking details array
         $bookingDetails['from_location'] = $from_location;
         $bookingDetails['to_location'] = $to_location;
-        
-        
-         // Load your HTML template
-         $html = file_get_contents(__DIR__ . "/template.php");
 
-         // Replace placeholders in the HTML template with actual values from the booking
-         foreach ($bookingDetails as $key => $value) {
-             $html = str_replace("{{ " . $key . " }}", $value, $html);
-         }
- 
-         // Create a new Dompdf instance
-         $options = new Options();
-         $options->setIsRemoteEnabled(true); // You may or may not need this based on your template
-         $dompdf = new Dompdf($options);
- 
-         // Load HTML content into Dompdf
-         $dompdf->loadHtml($html);
- 
-         // Set paper size and orientation
-         $dompdf->setPaper("A4", "landscape");
- 
-         // Render the PDF
-         $dompdf->render();
- 
-         // Output the PDF to the browser
-         $pdfContent = $dompdf->output();
-         
-         // Set headers for PDF download
-         header("Content-Disposition: inline; filename=bus_booking_$refNumber.pdf");
-         header('Content-Type: application/pdf');
-         
-         echo $pdfContent;
-     } else {
-         // Handle case where booking is not found
-         echo 'Booking not found.';
-     }
- } else {
-     // Handle case where ref_no is not provided
-     echo 'Invalid request';
- }
- 
- // Close the database connection
- $conn->close();
- ?>
+
+        // Load your HTML template
+        $html = file_get_contents(__DIR__ . "/template.php");
+
+        // Replace placeholders in the HTML template with actual values from the booking
+        foreach ($bookingDetails as $key => $value) {
+            $html = str_replace("{{ " . $key . " }}", $value, $html);
+        }
+
+        // Create a new Dompdf instance
+        $options = new Options();
+        $options->setIsRemoteEnabled(true); // You may or may not need this based on your template
+        $dompdf = new Dompdf($options);
+
+        // Load HTML content into Dompdf
+        $dompdf->loadHtml($html);
+
+        // Set paper size and orientation
+        $dompdf->setPaper("A4", "landscape");
+
+        // Render the PDF
+        $dompdf->render();
+
+        // Output the PDF to the browser
+        $pdfContent = $dompdf->output();
+
+        // Set headers for PDF download
+        header("Content-Disposition: inline; filename=bus_booking_$refNumber.pdf");
+        header('Content-Type: application/pdf');
+
+        echo $pdfContent;
+    } else {
+        // Handle case where booking is not found
+        echo 'Booking not found.';
+    }
+} else {
+    // Handle case where ref_no is not provided
+    echo 'Invalid request';
+}
+
+// Close the database connection
+$conn->close();
+?>
  

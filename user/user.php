@@ -21,6 +21,7 @@
 										<th class="text-center">#</th>
 										<th class="text-center">Name</th>
 										<th class="text-center">User Name</th>
+										<th class="text-center">User type</th>
 										<th class="text-center">Action</th>
 									</tr>
 								</thead>
@@ -61,6 +62,7 @@
 								tr.append('<td class="text-center">' + (i++) + '</td>')
 								tr.append('<td class="text-center">' + resp[k].name + '</td>')
 								tr.append('<td>' + resp[k].username + '</td>')
+								tr.append('<td>' + resp[k].user_type + '</td>')
 								tr.append('<td><center><button class="btn btn-sm btn-primary edit_bus mr-2" data-id="' + resp[k].id + '">Edit</button><button class="btn btn-sm btn-danger remove_bus" data-id="' + resp[k].id + '">Delete</button></center></td>')
 								$('#user-field tbody').append(tr)
 

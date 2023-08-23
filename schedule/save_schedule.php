@@ -14,7 +14,7 @@ $data .= ", status = 1"; // Set "status" to 1
 
 // Calculate the "space_left" using the difference between "bus_seats" and the sum of booked seats
 // $space_left = $bus_seats - $seats_booked;
-$data .= ", space_left = '$space_left' ";
+// $data .= ", space_left = '$space_left' ";
 
 if (empty($id)) {
     $insert = $conn->query("INSERT INTO schedule_list SET " . $data);

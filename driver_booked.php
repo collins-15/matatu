@@ -49,7 +49,7 @@
 		$('#booked-field').dataTable().fnDestroy();
 		$('#booked-field tbody').html('<tr><td colspan="7" class="text-center">Please wait...</td></tr>')
 		$.ajax({
-			url: 'book/load_booked.php',
+			url: 'dr_booked.php',
 			error: err => {
 				console.log(err)
 				alert_toast('An error occured.', 'danger');

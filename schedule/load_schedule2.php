@@ -5,21 +5,21 @@ $where = '';
 $params = array();
 
 if (!empty($_POST['from_location']) && !empty($_POST['to_location'])) {
-    $where .= "WHERE s.from_location LIKE ? AND s.to_location LIKE ? ";
-    $params[] = '%' . $_POST['from_location'] . '%';
-    $params[] = '%' . $_POST['to_location'] . '%';
+	$where .= "WHERE s.from_location LIKE ? AND s.to_location LIKE ? ";
+	$params[] = '%' . $_POST['from_location'] . '%';
+	$params[] = '%' . $_POST['to_location'] . '%';
 } elseif (!empty($_POST['from_location'])) {
-    $where .= "WHERE s.from_location LIKE ? ";
-    $params[] = '%' . $_POST['from_location'] . '%';
+	$where .= "WHERE s.from_location LIKE ? ";
+	$params[] = '%' . $_POST['from_location'] . '%';
 } elseif (!empty($_POST['to_location'])) {
-    $where .= "WHERE s.to_location LIKE ? ";
-    $params[] = '%' . $_POST['to_location'] . '%';
+	$where .= "WHERE s.to_location LIKE ? ";
+	$params[] = '%' . $_POST['to_location'] . '%';
 }
 
 if (!empty($_POST['departure_time'])) {
-    $departure_time = str_replace('/', '-', $_POST['departure_time']);
-    $where .= "AND DATE(s.departure_time) = ? ";
-    $params[] = $departure_time;
+	$departure_time = str_replace('/', '-', $_POST['departure_time']);
+	$where .= "AND DATE(s.departure_time) = ? ";
+	$params[] = $departure_time;
 }
 
 function calculateSpaceLeft($bus_seats, $schedule_id, $conn)
@@ -51,8 +51,8 @@ $stmt = $conn->prepare("SELECT s.*, b.bus_seats, CONCAT(b.bus_number, ' | ', b.n
                        ORDER BY DATE(s.departure_time) ASC");
 // Bind the parameters to the prepared statement
 if (!empty($params)) {
-    $types = str_repeat('s', count($params)); // Assuming all parameters are strings
-    $stmt->bind_param($types, ...$params);
+	$types = str_repeat('s', count($params)); // Assuming all parameters are strings
+	$stmt->bind_param($types, ...$params);
 }
 
 $stmt->execute();

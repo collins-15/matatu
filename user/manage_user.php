@@ -23,6 +23,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 					value="<?php echo isset($meta['username']) ? $meta['username'] : '' ?>">
 			</div>
 			<div class="form-group mb-2">
+	<label for="user_type" class="control-label">User Type</label>
+	<select class="form-control" id="user_type" name="user_type" required>
+		<option value="Admin" <?php if (isset($meta['user_type']) && $meta['user_type'] === 'Admin')
+			echo 'selected'; ?>>Admin</option>
+		<option value="Driver" <?php if (isset($meta['user_type']) && $meta['user_type'] === 'Driver')
+			echo 'selected'; ?>>Driver</option>
+		<option value="Conductor" <?php if (isset($meta['user_type']) && $meta['user_type'] === 'Conductor')
+			echo 'selected'; ?>>Conductor</option>
+	</select>
+</div>
+
+			<div class="form-group mb-2">
 				<label for="password" class="control-label">Password</label>
 				<input type="password" class="form-control" id="password" name="password" required
 					value="<?php echo isset($meta['password']) ? $meta['password'] : '' ?>">

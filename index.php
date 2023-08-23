@@ -11,15 +11,32 @@
 
 
   <body>
-    <?php session_start() ?>
-    <?php
+  <?php
+// Start the session and include the necessary header
+session_start();
+include 'header.php';
 
-    header('index.php?page=home');
-    include 'header.php'; ?>
-    <?php if (isset($_SESSION['login_id']))
-      include 'admin_navbar.php';
-    else
-      include 'navbar.php'; ?>
+// Include the appropriate navigation bar based on user_type
+if (isset($_SESSION['login_id'])) {
+    // If the user is logged in, check their user_type
+    if (isset($_SESSION['login_user_type'])) {
+        $user_type = $_SESSION['login_user_type'];
+        // Include the corresponding navigation bar based on user_type
+        if ($user_type === 'Admin') {
+            include 'admin_navbar.php';
+        } elseif ($user_type === 'Driver' || $user_type === 'Conductor') {
+            include 'driver_navbar.php'; 
+        } else {
+            // Include the default navbar for other user types
+            include 'navbar.php';
+        }
+    }
+} else {
+    // If the user is not logged in, include the default navbar
+    include 'navbar.php';
+}
+?>
+
 
     <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-body text-white">

@@ -3,12 +3,12 @@
 		<div class="container">
 			<div class="col-lg-12">
 				<?php if (isset($_SESSION['login_id'])): ?>
-					<div class="row">
-						<div class="col-md-12">
-							<button class="float-right btn btn-primary btn-sm" type="button" id="new_location">Add New <i
-									class="fa fa-plus"></i></button>
+						<div class="row">
+							<div class="col-md-12">
+								<button class="float-right btn btn-primary btn-sm" type="button" id="new_location">Add New <i
+										class="fa fa-plus"></i></button>
+							</div>
 						</div>
-					</div>
 				<?php endif; ?>
 				<div class="row">
 					&nbsp;
@@ -85,15 +85,15 @@
 		})
 	}
 	function manage() {
-    // Use event delegation for the click event on elements with class 'edit_location'
-    $(document).on('click', '.edit_location', function() {
-        uni_modal('Edit New Location', 'location/manage_location.php?id=' + $(this).attr('data-id'));
-    });
+	// Use event delegation for the click event on elements with class 'edit_location'
+	$(document).on('click', '.edit_location', function() {
+		uni_modal('Edit New Location', 'location/manage_location.php?id=' + $(this).attr('data-id'));
+	});
 
-    // Use event delegation for the click event on elements with class 'remove_location'
-    $(document).on('click', '.remove_location', function() {
-        _conf('Are you sure to delete this data?', 'location/remove_location', [$(this).attr('data-id')]);
-    });
+	// Use event delegation for the click event on elements with class 'remove_location'
+	$(document).on('click', '.remove_location', function() {
+		_conf('Are you sure to delete this data?', 'location/remove_location', [$(this).attr('data-id')]);
+	});
 }
 
 	function remove_location($id = '') {

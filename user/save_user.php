@@ -8,6 +8,7 @@ $status = 1;
 
 $data = " name = '$name' ";
 $data .= ", username = '$username' ";
+$data .= ", user_type = '$user_type' ";
 
 // Check if a password is provided
 if (!empty($password)) {

@@ -37,4 +37,3 @@ if (isset($_POST['City'])) {
     // Return an error message if the 'City' key is not present in the POST request
     echo "Error: City not provided.";
 }
-

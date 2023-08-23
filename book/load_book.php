@@ -57,7 +57,7 @@ if (isset($_POST['refNumber'])) {
         // Add the "From" and "To" locations to the booking details array
         $bookingDetails['from_location'] = $from_location;
         $bookingDetails['to_location'] = $to_location;
-        
+
         // Convert the array to JSON format and echo the response
         echo json_encode($bookingDetails);
     } else {

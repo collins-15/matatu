@@ -8,7 +8,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 }
 $bus = $conn->query("SELECT * FROM bus where status = 1");
 $location = $conn->query("SELECT id, city AS location FROM location WHERE status = 1");
-$space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 1 ");
+// $space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 1 ");
 
 ?>
 <div class="container-fluid">
@@ -22,7 +22,7 @@ $space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 
 					<option value="" <?php echo isset($meta['bus_id']) && $meta['bus_id'] > 0 ? '' : 'selected' ?>
 						disabled="">Select Here</option>
 					<?php while ($row = $bus->fetch_assoc()) { ?>
-						<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['bus_id']) && $meta['bus_id'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['bus_number'] . ' | ' . $row['name'] ?></option>
+							<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['bus_id']) && $meta['bus_id'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['bus_number'] . ' | ' . $row['name'] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -31,7 +31,7 @@ $space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 
 				<select name="from_location" id="from_location" class="form-control" required>
 					<option value="" <?php echo isset($meta['to_location']) && $meta['from_location'] > 0 ? '' : 'selected' ?> disabled="">Select Here</option>
 					<?php while ($row = $location->fetch_assoc()) { ?>
-						<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['from_location']) && $meta['from_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['location'] ?></option>
+							<option value="<?php echo $row['id'] ?>" <?php echo isset($meta['from_location']) && $meta['from_location'] == $row['id'] ? 'selected' : '' ?>><?php echo $row['location'] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -44,8 +44,8 @@ $space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 
 				<select name="to_location" id="to_location" class="form-control" required>
 					<option value="" <?php echo (!isset($meta['to_location']) || $meta['to_location'] == 0) ? 'selected' : ''; ?> disabled>Select Here</option>
 					<?php while ($row2 = $location->fetch_assoc()) { ?>
-						<option value="<?php echo $row2['id']; ?>" <?php echo (isset($meta['to_location']) && $meta['to_location'] == $row2['id']) ? 'selected' : ''; ?>><?php echo $row2['location']; ?>
-						</option>
+							<option value="<?php echo $row2['id']; ?>" <?php echo (isset($meta['to_location']) && $meta['to_location'] == $row2['id']) ? 'selected' : ''; ?>><?php echo $row2['location']; ?>
+							</option>
 					<?php } ?>
 				</select>
 			</div>
@@ -61,11 +61,11 @@ $space_left = $conn->query("SELECT space_left FROM schedule_list WHERE status = 
 					value="<?php echo isset($meta['eta']) ? date('Y/m/d H:i', strtotime($meta['eta'])) : '' ?>"autocomplete="off">
 			</div>
 			
-			<div class="form-group mb-2">
+			<!-- <div class="form-group mb-2">
 				<label for="space_left" class="control-label">space_left</label>
 				<input type="number" maxlength="4" class="form-control text-right" id="space_left" name="space_left"
 					value="<?php echo isset($meta['space_left']) ? $meta['space_left'] : '' ?>">
-			</div>
+			</div> -->
 
 
 			<div class="form-group mb-2">
