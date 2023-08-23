@@ -1,5 +1,5 @@
 <?php include('header.php') ?>
-<br><br><br>
+
 
 <title>Check Booking Details</title>
 <style>

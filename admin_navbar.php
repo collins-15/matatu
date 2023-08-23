@@ -6,8 +6,9 @@
     <nav class="nav-menu d-none d-lg-block" id='top-nav'>
       <ul>
         <li class="nav-home"><a href="./index.php?page=home">Home</a></li>
-        <li class="nav-schedule"><a href="./index.php?page=schedule/schedule">Schedule</a></li>
-        <li class="nav-booked"><a href="./index.php?page=book/booked">Booked List</a></li>
+        <li class="nav-schedule/schedule"><a href="./index.php?page=schedule/schedule">Schedule</a></li>
+        <li class="nav-book/booked"><a href="./index.php?page=book/booked">Booked List</a></li>
+        <li class="nav-Total_earnings"><a href="./index.php?page=Total_earnings">Total Earnings List</a></li>
         <li class="drop-down nav-bus nav-location"><a href="#">Panel</a>
           <ul>
             <li><a href="./index.php?page=bus/bus">Bus List</a></li>

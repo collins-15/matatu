@@ -108,7 +108,7 @@
 							tr.append('<td>' + resp[k].price + '</td>');
 
 							// Check if the space_left is 0, and hide the "Book Now" button
-							if (resp[k].space_left == 0) {
+							if (resp[k].available_space == 0) {
 								tr.append('<td><center>No Available Seat</center></td>');
 							} else {
 								// If space_left is not 0, show the "Book Now" button

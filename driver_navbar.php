@@ -6,13 +6,9 @@
     <nav class="nav-menu d-none d-lg-block" id='top-nav'>
       <ul>
         <li class="nav-dashboard"><a href="./index.php?page=dashboard">DASHBOARD</a></li>
-        <li class="nav-driver_booked"><a href="./index.php?page=driver_booked">Booked customers</a></li>
+        <li class="nav-driver_booked"><a href="./index.php?page=driver_booked">BOOKED CLIENTS</a></li>
         <li class="nav-driver_earnings"><a href="./index.php?page=driver_earnings">EARNINGS</a></li>
-        <!-- <li class="nav-booked"><a href="./index.php?page=book/booked">Vehicle Information</a></li> -->
-      
-        <!-- <li><a href="./index.php?page=bus/bus">Bus List</a></li> -->
-         <!-- <li><a href="./index.php?page=location/location">Location List</a></li> -->
-        <li><a href="./logout.php">Logout</a></li>
+        <li><a href="./logout.php">LOGOUT</a></li>
       </ul>
     </nav><!-- .nav-menu -->
 

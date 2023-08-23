@@ -63,7 +63,7 @@ if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 			</p>
 </div>
 			<div class="col-md-6">
-			<?php if ($remainingSpace > 0 || isset($_SESSION['login_id'])): ?>
+			<?php if ($remainingSpace < 0 || isset($_SESSION['login_id'])): ?>
 			
 					<input type="hidden" class="form-control" id="sid" name="sid"
 						value='<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>' required="">
@@ -111,16 +111,15 @@ if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 								value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
 						</div>
 						<?php if (isset($_SESSION['login_id'])): ?>
-									<div class="form-group mb-2">
-										<label for="seats" class="control-label">Status</label>
-										<select class="form-control" id="status" name="status"
-											value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
-											<option value="1" <?php echo isset($bmeta['status']) && $bmeta['status'] == 1 ? "selected" : '' ?>>
-												Paid</option>
-											<option value="0" <?php echo isset($bmeta['status']) && $bmeta['status'] == 0 ? "selected" : '' ?>>
-												Unpaid</option>
-										</select>
-									</div>
+							<div class="form-group mb-2">
+            <label for="status" class="control-label">Status</label>
+            <select class="form-control" id="status" name="status">
+                <option value="1" <?php echo isset($bmeta['status']) && $bmeta['status'] == 1 ? "selected" : '' ?>>
+                    Paid</option>
+                <option value="0" <?php echo isset($bmeta['status']) && $bmeta['status'] == 0 ? "selected" : '' ?>>
+                    Unpaid</option>
+            </select>
+        </div>
 						<?php endif; ?>
 			<?php else: ?>
 						<h3>No Available seat</h3>
