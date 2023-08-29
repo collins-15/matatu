@@ -6,4 +6,4 @@ $data = array();
 while ($row = $query->fetch_assoc()) {
 	$data[] = $row;
 }
-echo json_encode($data);
+echo json_encode($data,JSON_PRETTY_PRINT);

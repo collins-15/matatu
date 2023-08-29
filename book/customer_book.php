@@ -63,83 +63,96 @@ if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 			</p>
 </div>
 			<div class="col-md-6">
-			<?php if ($remainingSpace < 0 || isset($_SESSION['login_id'])): ?>
+			<?php if ($remainingSpace > 0 || isset($_SESSION['login_id'])): ?>
 			
-					<input type="hidden" class="form-control" id="sid" name="sid"
-						value='<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>' required="">
-					<input type="hidden" class="form-control" id="bid" name="bid"
-						value='<?php echo isset($_GET['bid']) ? $_GET['bid'] : '' ?>' required="">
+						<input type="hidden" class="form-control" id="sid" name="sid"
+							value='<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>' required="">
+						<input type="hidden" class="form-control" id="bid" name="bid"
+							value='<?php echo isset($_GET['bid']) ? $_GET['bid'] : '' ?>' required="">
 
-					<div class="form-group ">
-						<label for="first_name" class="control-label">First Name:</label>
-						<input type="text" class="form-control text-right" id="first_name" name="first_name"
-							value="<?php echo isset($bmeta['first_name']) ? $bmeta['first_name'] : '' ?>">
-					</div>
-					<div class="form-group ">
-							<label for="last_name" class="control-label">Last Name</label>
-							<input type="text" class="form-control text-right" id="last_name" name="last_name"
-								value="<?php echo isset($bmeta['last_name']) ? $bmeta['last_name'] : '' ?>">
+						<div class="form-group ">
+							<label for="first_name" class="control-label">First Name:</label>
+							<input type="text" class="form-control text-right" id="first_name" name="first_name"
+								value="<?php echo isset($bmeta['first_name']) ? $bmeta['first_name'] : '' ?>">
 						</div>
-					<div class="form-group ">
-							<label for="location" class="control-label">Where are you based?</label>
-							<input type="text" class="form-control text-right" id="location" name="location"
-								value="<?php echo isset($bmeta['location']) ? $bmeta['location'] : '' ?>">
-						</div>
-					<div class="form-group ">
-							<label for="phone_number" class="control-label">Phone Number</label>
-							<input type="number" class="form-control text-right" id="phone_number" name="phone_number"
-								value="<?php echo isset($bmeta['phone_number']) ? $bmeta['phone_number'] : '' ?>">
-						</div>
-					<div class="form-group ">
-							<label for="email" class="control-label">Email Address</label>
-							<input type="email" class="form-control text-right" id="email" name="email"
-								value="<?php echo isset($bmeta['email']) ? $bmeta['email'] : '' ?>">
-						</div>
-					<div class="form-group ">
-							<label for="ID_number" class="control-label">ID number</label>
-							<input type="number" class="form-control text-right" id="ID_number" name="ID_number"
-								value="<?php echo isset($bmeta['ID_number']) ? $bmeta['ID_number'] : '' ?>">
-						</div>
-					<div class="form-group ">
-							<label for="age" class="control-label">Age</label>
-							<input type="number"  class="form-control text-right" id="age" name="age"
-								value="<?php echo isset($bmeta['age']) ? $bmeta['age'] : '' ?>">
-						</div>
-					<div class="form-group ">
-							<label for="seats" class="control-label">Number of seats</label>
-							<input type="number" maxlength="4" class="form-control text-right" id="seats" name="seats"
-								value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
-						</div>
-						<?php if (isset($_SESSION['login_id'])): ?>
-							<div class="form-group mb-2">
-            <label for="status" class="control-label">Status</label>
-            <select class="form-control" id="status" name="status">
-                <option value="1" <?php echo isset($bmeta['status']) && $bmeta['status'] == 1 ? "selected" : '' ?>>
-                    Paid</option>
-                <option value="0" <?php echo isset($bmeta['status']) && $bmeta['status'] == 0 ? "selected" : '' ?>>
-                    Unpaid</option>
-            </select>
-        </div>
-						<?php endif; ?>
+						<div class="form-group ">
+								<label for="last_name" class="control-label">Last Name</label>
+								<input type="text" class="form-control text-right" id="last_name" name="last_name"
+									value="<?php echo isset($bmeta['last_name']) ? $bmeta['last_name'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="location" class="control-label">Where are you based?</label>
+								<input type="text" class="form-control text-right" id="location" name="location"
+									value="<?php echo isset($bmeta['location']) ? $bmeta['location'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="phone_number" class="control-label">Phone Number</label>
+								<input type="number" class="form-control text-right" id="phone_number" name="phone_number"
+									value="<?php echo isset($bmeta['phone_number']) ? $bmeta['phone_number'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="email" class="control-label">Email Address</label>
+								<input type="email" class="form-control text-right" id="email" name="email"
+									value="<?php echo isset($bmeta['email']) ? $bmeta['email'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="ID_number" class="control-label">ID number</label>
+								<input type="number" class="form-control text-right" id="ID_number" name="ID_number"
+									value="<?php echo isset($bmeta['ID_number']) ? $bmeta['ID_number'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="age" class="control-label">Age</label>
+								<input type="number"  class="form-control text-right" id="age" name="age"
+									value="<?php echo isset($bmeta['age']) ? $bmeta['age'] : '' ?>">
+							</div>
+						<div class="form-group ">
+								<label for="seats" class="control-label">Number of seats</label>
+								<input type="number" maxlength="4" class="form-control text-right" id="seats" name="seats"
+									value="<?php echo isset($bmeta['seats']) ? $bmeta['seats'] : '' ?>">
+							</div>
+							<?php if (isset($_SESSION['login_id'])): ?>
+									<div class="form-group mb-2">
+					<label for="status" class="control-label">Status</label>
+					<select class="form-control" id="status" name="status">
+						<option value="1" <?php echo isset($bmeta['status']) && $bmeta['status'] == 1 ? "selected" : '' ?>>
+							Paid</option>
+						<option value="0" <?php echo isset($bmeta['status']) && $bmeta['status'] == 0 ? "selected" : '' ?>>
+							Unpaid</option>
+					</select>
+				</div>
+							<?php endif; ?>
 			<?php else: ?>
-						<h3>No Available seat</h3>
-						<style>
-							.uni_modal .modal-footer .book_now {
-								display: none;
-							}
-						</style>
+							<h3>No Available seat</h3>
+							<style>
+								.uni_modal .modal-footer .book_now {
+									display: none;
+								}
+							</style>
 			<?php endif; ?>
 			</div>
 					</div>
 		</div>
 	</form>
+	<!-- Add this section on your main page -->
+<div id="referenceSection" style="display: none;">
+    <p><strong>Reference Number:</strong> <span id="referenceNumber"></span></p>
+</div>
+
 </div>
 
 
 <script>
 	$('#manage_book').submit(function (e) {
-		e.preventDefault()
-		start_load()
+		e.preventDefault();
+		start_load();
+		var selectedSeats = parseInt($('#seats').val()); // Get the selected number of seats
+		var remainingSpace = parseInt(<?php echo $remainingSpace; ?>); // Get the remaining space from PHP
+
+		if (selectedSeats > remainingSpace) {
+			alert("SELECTED MORE THAN AVAILABLE SPACE.");
+			location.reload(); // Refresh the page
+			return; // Don't proceed with form submission
+		}
 		$.ajax({
 			url: 'book/book_now.php',
 			method: 'POST',
@@ -150,19 +163,24 @@ if (isset($_SESSION['login_id']) && isset($_GET['bid'])) {
 				alert_toast('An error occured', 'danger');
 			},
 			success: function (resp) {
-				resp = JSON.parse(resp)
-				if (resp.status == 1) {
-					end_load()
-					$('.modal').modal('hide')
-					alert_toast('Data successfully saved', 'success');
-					if ('<?php echo !isset($_SESSION['login_id']) ?>' == 1) {
-						$('#book_modal .modal-body').html('<div class="text-center"><p><strong><h3>' + resp.ref + '</h3></strong></p><small>Reference Number</small><br/><small>Copy or Capture your Reference number </small></div>')
-						$('#book_modal').modal('show')
-					} else {
-						load_booked();
-					}
+			resp = JSON.parse(resp);
+			if (resp.status == 1) {
+				end_load();
+				$('.modal').modal('hide');
+				var referenceNumber = resp.ref;
+				$('#referenceNumber').text(referenceNumber); // Update the reference number in the main page section
+				$('#referenceSection').show(); // Show the reference section
+				alert_toast('Data successfully saved. Reference Number: ' + referenceNumber, 'success');
+				if ('<?php echo !isset($_SESSION['login_id']) ?>' == 1) {
+					$('#book_modal .modal-body').html('<div class="text-center"><p><strong><h3>' + referenceNumber + '</h3></strong></p><small>Reference Number</small><br/><small>Copy or Capture your Reference number </small></div>');
+					$('#book_modal').modal('show');
+				} else {
+					load_booked();
 				}
 			}
+		}
+
+
 		})
 	})
 	$('.datetimepicker').datetimepicker({

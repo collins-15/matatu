@@ -5,6 +5,7 @@ include('../db_connect.php');
 // Extract data from the POST request variables
 extract($_POST);
 
+
 // Initialize the data string with the schedule ID
 $data = 'schedule_id = ' . $sid;
 
@@ -16,8 +17,9 @@ $data .= ', ID_number = "' . $ID_number . '"';
 $data .= ', phone_number = "' . $phone_number . '"';
 $data .= ', email = "' . $email . '"';
 $data .= ', age = "' . $age . '"';
-$data .= ', seats ="' . $seats . '"';
+$data .= ', seats = "' . $seats . '"';
 
+ 
 // Check if booking ID ($bid) is provided, indicating an update
 if (!empty($bid)) {
     // Append status data to $data if provided
