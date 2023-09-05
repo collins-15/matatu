@@ -6,15 +6,13 @@
     <nav class="nav-menu d-none d-lg-block" id='top-nav'>
       <ul>
         <li class="nav-home"><a href="./index.php?page=home">Home</a></li>
-        <li class="nav-schedule/schedule"><a href="./index.php?page=schedule/schedule">Schedule</a></li>
+        <li class="nav-admin_dashboard"><a href="./index.php?page=admin_dashboard">admin_dashboard</a></li>
+        <li class="nav-schedule/schedule"><a href="./index.php?page=schedule/view_schedule">Scheduled list</a></li>
         <li><a href="./index.php?page=location/location">Location List</a></li>
-        <li class="drop-down nav-bus nav-location"><a href="#">Reports</a>
-          <ul>
-            <li class="nav-book/booked"><a href="./index.php?page=book/booked">Clients booked</a></li>
-            <li><a href="./index.php?page=bus/bus">Driver and Bus</a></li>
-            <li class="nav-Total_earnings"><a href="./index.php?page=Total_earnings">Total Earnings List</a></li>
-          </ul>
-        </li>
+        <li class="nav-book/booked"><a href="./index.php?page=book/booked">Clients booked</a></li>
+        <li><a href="./index.php?page=bus/bus">Driver and Bus</a></li>
+        <li class="nav-Total_earnings"><a href="./index.php?page=Total_earnings">Total Earnings List</a></li>
+        <li><a href="./index.php?page=report">Generate Reports</a></li>
         <li class="drop-down nav-user"><a href="#">
             <?php echo $_SESSION['login_name'] ?>
           </a>

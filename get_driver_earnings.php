@@ -2,24 +2,31 @@
 include('db_connect.php'); // Include your database connection
 
 $query = "SELECT
-b.driver_id AS driver_id,
-sl.id AS schedule_id,
-sl.from_location AS from_location,
-sl.to_location AS to_location,
-b.driver_name AS driver_name,
-SUM(t.payment_amount) AS total_earnings
+    concat(b.bus_number, ' | ', b.name) AS driver_id,
+    sl.id AS schedule_id,
+    loc_from.city AS from_location,
+    loc_to.city AS to_location,
+    b.driver_name AS driver_name,
+    SUM(t.payment_amount) AS total_earnings
 FROM
-bus b
+    bus b
 LEFT JOIN
-schedule_list sl ON b.id = sl.bus_id
+    schedule_list sl ON b.id = sl.bus_id
 LEFT JOIN
-booked bk ON sl.id = bk.schedule_id
+    booked bk ON sl.id = bk.schedule_id
 LEFT JOIN
-transaction t ON bk.id = t.booked_id
+    transaction t ON bk.id = t.booked_id
+LEFT JOIN
+    location loc_from ON sl.from_location = loc_from.id
+LEFT JOIN
+    location loc_to ON sl.to_location = loc_to.id
+WHERE
+    bk.status = 1
 GROUP BY
-b.driver_id, b.driver_name, sl.id, sl.from_location, sl.to_location;
+    driver_id, driver_name, schedule_id, from_location, to_location
+ORDER BY
+    schedule_id;"; 
 
-";
 
 $result = mysqli_query($conn, $query);
 
@@ -41,6 +48,5 @@ if ($result === false) {
         'overall_total' => $overall_total
     );
     
-    echo json_encode($response,JSON_PRETTY_PRINT);
+    echo json_encode($response, JSON_PRETTY_PRINT);
 }
-?>
