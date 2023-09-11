@@ -49,7 +49,7 @@ span {
             <p><strong>Phone Number:</strong> <span id="phone_number"></span></p>
             <p><strong>Email:</strong> <span id="email"></span></p>
             <p><strong>Age:</strong> <span id="age"></span></p>
-            <p><strong>Number of Seats:</strong> <span id="seats"></span></p>
+            <p><strong>Seat Number:</strong> <span id="booked_seat"></span></p>
             <p><strong>Price to Pay:</strong> <span id="totalPrice"></span></p>
             <p><strong>Status:</strong> <span id="status"></span></p>
         </div>
@@ -140,7 +140,7 @@ span {
                         $('#ref_no').text(data.ref_no);
                         $('#bus_booked').text(data.bus_booked);
                         $('#bookingName').text(data.name);
-                        $('#seats').text(data.seats);
+                        $('#booked_seat').text(data.booked_seat);
                         // $('#priceToPay').text(data.price);
                         $('#from_location').text(data.from_location);
                         $('#to_location').text(data.to_location);

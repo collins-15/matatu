@@ -15,7 +15,7 @@ if (isset($_GET['ref_no'])) {
     $query = "SELECT 
     concat(b.bus_number, ' | ', b.name) AS bus_booked, 
     bd.first_name, bd.last_name, bd.ID_number,bd.ref_no,    
-    bd.location, bd.phone_number, bd.email, bd.age, bd.seats, bd.status, 
+    bd.location, bd.phone_number, bd.email, bd.age, bd.booked_seat, bd.status, 
     sl.price, sl.from_location, sl.to_location,
     b.driver_name, b.driver_number,b.registration_number, b.conductor_name,b.conductor_number
   FROM booked bd
@@ -53,7 +53,7 @@ if (isset($_GET['ref_no'])) {
                 return '';
             }
         }
-        $totalPrice = $bookingDetails['seats'] * $bookingDetails['price'];
+        $totalPrice =  $bookingDetails['price'];
 
         // Get the "From" and "To" locations using the getLocationName function
         $from_location = getLocationName($bookingDetails['from_location'], $conn);

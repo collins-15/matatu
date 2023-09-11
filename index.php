@@ -13,7 +13,7 @@
   <body>
   <?php
 // Start the session and include the necessary header
-session_start();
+  session_start();
 include 'header.php';
 
 // Include the appropriate navigation bar based on user_type

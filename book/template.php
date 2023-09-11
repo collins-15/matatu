@@ -114,7 +114,7 @@
                     <th>Phone Number</th>
                     <th>Email</th>
                     <th>Age</th>
-                    <th>Number of Seats</th>
+                    <th>seat Number</th>
                     <th>Price to Pay</th>
                     <th>Status</th>
                     
@@ -128,7 +128,7 @@
                     <td>{{ phone_number }}</td>
                     <td>{{ email }}</td>
                     <td>{{ age }}</td>
-                    <td>{{ seats }}</td>
+                    <td>{{ booked_seat }}</td>
                     <td>{{ total_price }}</td>
                     <td>{{ status }}</td>
                    

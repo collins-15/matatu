@@ -119,9 +119,9 @@
                                 999
                             </p>
                         </div>
-                        <a href="./index.php?page=schedule/schedule">View More <i class="fas fa-arrow-right"></i></a>
+                        <a href="./index.php?page=schedule/view_schedule">View More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div id="Seat" class="info-box status-item">
+                    <!-- <div id="Seat" class="info-box status-item">
                         <div class="heading">
                             <h5>Seats</h5>
                             <div class="info">
@@ -131,13 +131,14 @@
                         <div class="info-content">
                             <p>Total Seats</p>
                             <p class="num" data-target="<?php
-                            echo 38 * count($busData);
+                            echo count($busData);
                             ?>">
                                 999
                             </p>
                         </div>
-                        <a href="./index.php?page=schedule/schedule">View More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                        <a href="./index.php?page=schedule/view_schedule">View More <i class="fas fa-arrow-right"></i></a>
+                    
+                </div> -->
                 </div>
                 <!-- <h3>User</h3> -->
                 <div id="user">

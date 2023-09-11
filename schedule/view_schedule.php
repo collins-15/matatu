@@ -146,27 +146,29 @@
 			_conf('Are you sure to delete this data?','schedule/remove_schedule', [$(this).attr('data-id')])
 		});
 	}
-	function remove_schedule($id = '') {
-		start_load()
-		$.ajax({
-			url: 'schedule/delete_schedule.php',
-			method: 'POST',
-			data: { id: $id },
-			error: err => {
-				console.log(err)
-				alert_toast("An error occured", "danger");
-				end_load()
-			},
-			success: function (resp) {
-				if (resp == 1) {
-					alert_toast("Data succesfully deleted", "success");
-					end_load()
-					$('.modal').modal('hide')
-					load_schedule()
-				}
-			}
-		})
-	}
+	function remove_schedule(id = '') {
+    start_load(); // Add a semicolon here
+
+    $.ajax({
+        url: 'schedule/delete_schedule.php',
+        method: 'POST',
+        data: { id: id }, // Correct the variable name to 'id'
+        error: err => {
+            console.log(err);
+            alert_toast("An error occurred", "danger");
+            end_load();
+        },
+        success: function (resp) {
+            if (resp == 1) {
+                alert_toast("Data successfully deleted", "success");
+                end_load();
+                $('.modal').modal('hide');
+                load_schedule();
+            }
+        }
+    });
+}
+
 	$(document).ready(function () {
 		load_schedule()
 	})

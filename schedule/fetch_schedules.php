@@ -43,24 +43,24 @@ while ($row = $qry->fetch_assoc()) {
              $row['eta'] = date('M d, Y h:i A', $eta_time);
          }
  
-         // Calculate the total number of booked seats for the given schedule
-         $query = "SELECT SUM(seats) AS total_booked_seats FROM booked WHERE schedule_id = " . $row['id'];
-         $result = $conn->query($query);
- 
-         if ($result->num_rows > 0) {
-             $booked_data = $result->fetch_assoc();
-             $total_booked_seats = $booked_data['total_booked_seats'];
-         } else {
-             $total_booked_seats = 0;
-         }
- 
-         // Calculate available space
-         $bus_seats = $row['bus_seats'];
-         $available_space = $bus_seats - $total_booked_seats;
- 
-         // Add the calculated available space to the row
-         $row['available_space'] = $available_space;
-    
+          // Calculate the total number of booked seats for the given schedule
+          $query = "SELECT COUNT(*) AS total_booked_seats FROM booked WHERE schedule_id = " . $row['id'];
+          $result = $conn->query($query);
+  
+          if ($result->num_rows > 0) {
+              $booked_data = $result->fetch_assoc();
+              $total_booked_seats = $booked_data['total_booked_seats'];
+          } else {
+              $total_booked_seats = 0;
+          }
+  
+          // Calculate available space
+          $bus_seats = $row['bus_seats'];
+          $available_space = $bus_seats - $total_booked_seats;
+  
+          // Add the calculated available space to the row
+          $row['available_space'] = $available_space;
+  
     // Add the row to the data array
     $data[] = $row;
 }

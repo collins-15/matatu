@@ -43,8 +43,8 @@ while ($row = $qry->fetch_assoc()) {
             $row['eta'] = date('M d, Y h:i A', $eta_time);
         }
 
-        // Calculate the total number of booked seats for the given schedule
-        $query = "SELECT SUM(seats) AS total_booked_seats FROM booked WHERE schedule_id = " . $row['id'];
+      // Calculate the total number of booked seats for the given schedule
+        $query = "SELECT COUNT(*) AS total_booked_seats FROM booked WHERE schedule_id = " . $row['id'];
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -67,5 +67,5 @@ while ($row = $qry->fetch_assoc()) {
 }
 
 // Convert the data array to JSON and echo it
-echo json_encode($data);
+echo json_encode($data,JSON_PRETTY_PRINT);
 ?>

@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Retrieve the booked_id, schedule_id, and seats from the booked table
-            $fetchIdsAndSeatsSql = "SELECT id, schedule_id, seats FROM booked WHERE ref_no = '$refNumber'";
+            $fetchIdsAndSeatsSql = "SELECT id, schedule_id, booked_seat FROM booked WHERE ref_no = '$refNumber'";
             $result = $conn->query($fetchIdsAndSeatsSql);
 
             if ($result->num_rows === 1) {
                 $row = $result->fetch_assoc();
                 $bookedId = $row['id'];
                 $scheduleId = $row['schedule_id'];
-                $seats = $row['seats'];
+                $seats = $row['booked_seat'];
 
                 // Retrieve bus_id and price from the schedule_list table
                 $fetchBusIdAndPriceSql = "SELECT bus_id, price FROM schedule_list WHERE id = $scheduleId";
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $price = $busIdAndPriceRow['price'];
 
                     // Calculate payment_amount
-                    $paymentAmount = $seats * $price;
+                    $paymentAmount =  $price;
 
                     // Insert a record into the transaction table
                     $insertTransactionSql = "INSERT INTO transaction (booked_id, bus_id, schedule_id, payment_amount, payment_date) VALUES (?, ?, ?, ?, NOW())";

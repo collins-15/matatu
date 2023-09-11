@@ -19,7 +19,7 @@ include('db_connect.php');
     $customerJson = json_encode($arr);
     
     // Seats JSON
-    $stSql = "Select bus_seats from bus  ";
+    $stSql = "SELECT COUNT(*) AS total_booked_seats FROM booked  ";
     $resultstSql = mysqli_query($conn, $stSql);
     $arr = array();
     if(mysqli_num_rows($resultstSql))

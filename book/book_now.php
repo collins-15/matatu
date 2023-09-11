@@ -5,7 +5,6 @@ include('../db_connect.php');
 // Extract data from the POST request variables
 extract($_POST);
 
-
 // Initialize the data string with the schedule ID
 $data = 'schedule_id = ' . $sid;
 
@@ -17,16 +16,15 @@ $data .= ', ID_number = "' . $ID_number . '"';
 $data .= ', phone_number = "' . $phone_number . '"';
 $data .= ', email = "' . $email . '"';
 $data .= ', age = "' . $age . '"';
-$data .= ', seats = "' . $seats . '"';
+$data .= ', booked_seat = ' . $booked_seat;
 
- 
 // Check if booking ID ($bid) is provided, indicating an update
 if (!empty($bid)) {
     // Append status data to $data if provided
-    $data .= ', status ="' . $status . '"';
+    $data .= ', status = ' . $status;
 
     // Create an SQL UPDATE query to update the existing booking with new data
-    $update = $conn->query("UPDATE booked SET " . $data . " WHERE id =" . $bid);
+    $update = $conn->query("UPDATE booked SET " . $data . " WHERE id = " . $bid);
 
     // Check if the update was successful
     if ($update) {
@@ -63,7 +61,11 @@ $insert = $conn->query("INSERT INTO booked SET " . $data);
 
 // Check if the insertion was successful
 if ($insert) {
+    // Retrieve the ID of the newly inserted booking
+    $newBookingID = $conn->insert_id;
+
     // Return a JSON response indicating success status and the generated reference number
     echo json_encode(array('status' => 1, 'ref' => $ref));
 }
+
 ?>
